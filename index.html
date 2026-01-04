@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ILLÚMINA | Alta Joyería</title>
+    <link rel="icon" type="image/png" href="imgs//website/favicon.jpg">
+    <link rel="apple-touch-icon" href="imgs//website/favicon.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="cartAlert" class="cart-alert d-none animate-fade-down">
+        <span id="alertMsg"></span> 
+        <span class="alert-link" onclick="forceOpenCart()">Ver Carrito</span>
+    </div>
+
+    <div id="emptyCartAlert" class="cart-alert alert-error d-none">
+        <span>Debes añadir algo al carrito para continuar</span>
+    </div>
+
+    <nav class="navbar fixed-top">
+        <div class="container">
+            <button id="themeToggle" class="btn-icon"><i class="bi bi-moon-stars"></i></button>
+            <a class="navbar-brand animate-fade-down" href="#" onclick="scrollToTop(event)">ILLÚMINA</a>
+            <button class="btn-icon position-relative animate-fade-down" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+                <i class="bi bi-bag"></i>
+                <span id="cartCount" class="badge-dot d-none"></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-image"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content text-center">
+            <h1 class="display-2 fw-light ls-5 animate-fade-down">ILLÚMINA</h1>
+            <p class="lead ls-3 text-uppercase opacity-75 animate-fade-down">Piezas que cuentan tu historia</p>
+            <button onclick="scrollToSection('categorias')" class="btn-gold mt-4 text-decoration-none animate-fade-down">Explorar Colección</button>
+        </div>
+    </section>
+
+    <section class="py-5 section-info">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-4">
+                    <i class="bi bi-search gold-text fs-1 mb-3 d-block"></i>
+                    <h6 class="ls-3 fw-bold">1. SELECCIONA</h6>
+                    <p class="small opacity-75">Explora nuestro catálogo y elige tus joyas favoritas.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-whatsapp gold-text fs-1 mb-3 d-block"></i>
+                    <h6 class="ls-3 fw-bold">2. ENVÍA</h6>
+                    <p class="small opacity-75">Mándanos tu pedido para confirmar existencias y precios.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-truck gold-text fs-1 mb-3 d-block"></i>
+                    <h6 class="ls-3 fw-bold">3. RECIBE</h6>
+                    <p class="small opacity-75">Recibe el brillo de ILLÚMINA en tu puerta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="categorias" class="container py-5">
+        <div class="row g-5">
+            <div class="col-12 col-md-6">
+                <div class="category-card" onclick="openCategory('cadenas')">
+                    <div class="category-img" style="background-image: url('imgs/cadenas/categoria-cadenas.jpg');"></div>
+                    <div class="category-overlay"></div>
+                    <h3>CADENAS</h3>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="category-card" onclick="openCategory('pulseras')">
+                    <div class="category-img" style="background-image: url('imgs/pulseras/categoria-pulseras.jpg');"></div>
+                    <div class="category-overlay"></div>
+                    <h3>PULSERAS</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-custom pt-5 pb-4 mt-5 border-top">
+    <div class="container">
+        <div class="row g-4 text-center text-md-start">
+            <div class="col-md-4">
+                <h5 class="fw-bold mb-3 ls-3" style="font-family:'Cinzel', serif;">ILLÚMINA</h5>
+                <p class="opacity-75 small">Piezas de alta joyería en plata ley 925 mexicana. Diseños exclusivos para reflejar tu elegancia.</p>
+                <div class="d-flex justify-content-center justify-content-md-start gap-3 mt-3">
+                    <a href="#" class="btn-icon p-0"><i class="bi bi-instagram fs-5"></i></a>
+                    <a href="#" class="btn-icon p-0"><i class="bi bi-facebook fs-5"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h6 class="fw-bold mb-3 text-uppercase small ls-2">Ayuda</h6>
+                <ul class="list-unstyled">
+                    <li><button type="button" class="btn btn-link text-decoration-none opacity-75 p-0 mb-2 small footer-link" onclick="openLegal('terminos')">Términos y Condiciones</button></li>
+                    <li><button type="button" class="btn btn-link text-decoration-none opacity-75 p-0 mb-2 small footer-link" onclick="openLegal('envios')">Políticas de Envío</button></li>
+                </ul>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <h6 class="fw-bold mb-3 text-uppercase small ls-2">Atención Directa</h6>
+                <p class="opacity-75 small mb-2">
+                    <i class="bi bi-envelope me-2 gold-text"></i>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=illuminajoyeria@gmail.com&su=Consulta%20Illúmina" target="_blank" class="text-reset text-decoration-none">illuminajoyeria@gmail.com</a>
+                </p>
+                <p class="opacity-75 small mb-0">
+                    <i class="bi bi-whatsapp me-2 gold-text"></i>
+                    <a href="https://wa.me/525657785749" target="_blank" class="text-reset text-decoration-none">+52 56 5778 5749</a>
+                </p>
+            </div>
+        </div>
+        <hr class="my-4 opacity-25">
+        <div class="text-center opacity-50 small ls-2">© 2026 ILLÚMINA JOYERÍA PREMIUM</div>
+    </div>
+</footer>
+
+    <div class="modal fade" id="mainModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div id="modalTarget" class="modal-body p-0 custom-scroll"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ticketModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content border-0">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="ls-3 fw-light mx-auto mt-2">TICKET DE COMPRA</h5>
+                    <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body custom-scroll" style="max-height: 80vh;">
+                    <div id="ticketContent" class="ticket-paper p-4 mb-4"></div>
+                    
+                    <div class="px-2">
+                        <div class="switch-container">
+                            <span class="small ls-2">¿SOLICITAR ENVÍO A DOMICILIO?</span>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="deliveryToggle" onchange="toggleDeliveryForm()">
+                            </div>
+                        </div>
+
+                        <div id="deliveryFormContainer">
+                            <div class="mb-2">
+                                <input type="text" class="form-control input-premium" id="inputName" placeholder="Nombre Completo">
+                            </div>
+                            <div class="mb-2">
+                                <input type="text" class="form-control input-premium" id="inputAddress" placeholder="Calle y Número">
+                            </div>
+                            <div class="row g-2 mb-2">
+                                <div class="col-6">
+                                    <input type="text" class="form-control input-premium" id="inputColonia" placeholder="Colonia">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control input-premium" id="inputCP" placeholder="C.P.">
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <input type="text" class="form-control input-premium" id="inputCity" placeholder="Ciudad y Estado">
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control input-premium" id="inputPhone" placeholder="Número de Teléfono">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 justify-content-center pb-4">
+                    <button onclick="sendWhatsAppOrder()" class="btn-gold w-100 py-3"><i class="bi bi-whatsapp me-2"></i> ENVIAR COTIZACIÓN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="ls-3 fw-light">TU BOLSA</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <div id="cartItemsContainer" class="flex-grow-1 custom-scroll"></div>
+            <div class="pt-4 border-top mt-auto">
+                <div class="d-flex justify-content-between mb-4">
+                    <span class="small opacity-50 ls-2">TOTAL</span>
+                    <span id="cartTotal" class="gold-text fw-bold fs-5">$0.00</span>
+                </div>
+                <button onclick="generateTicket()" class="btn-gold w-100 py-3">GENERAR TICKET</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="d-flex align-items-center">
+            <i class="bi bi-shield-lock-fill gold-text fs-4 me-3"></i>
+            <span class="small opacity-75">
+                Utilizamos cookies para recordar tu carrito y tus preferencias de visualización. 
+                Tu privacidad es nuestra prioridad.
+            </span>
+        </div>
+        <button onclick="acceptCookies()" class="btn-gold py-2 px-4" style="min-width: 120px; font-size: 0.8rem;">ACEPTAR</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

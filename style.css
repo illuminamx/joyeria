@@ -1,0 +1,380 @@
+:root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --gold: #c9a24d;
+    --nav: rgba(255,255,255,0.98);
+    --modal-bg: #ffffff;
+    --ticket-bg: #f8f9fa;
+}
+
+[data-theme="dark"] {
+    --bg: #0a0a0a;
+    --text: #ffffff;
+    --nav: rgba(10,10,10,0.98);
+    --modal-bg: #111111;
+    --ticket-bg: #1a1a1a;
+}
+
+[data-theme="dark"] .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-down { animation: fadeDown 0.8s ease forwards; }
+
+.offcanvas.offcanvas-end {
+    transition: transform 0.4s ease, visibility 0.4s ease;
+}
+
+.offcanvas-backdrop.show {
+    opacity: 0.7 !important;
+    backdrop-filter: blur(4px);
+    transition: opacity 0.5s ease;
+}
+
+html:has(body.modal-open),
+html:has(body.offcanvas-open) {
+    overflow: hidden !important;
+}
+
+body.modal-open, 
+body.offcanvas-open {
+    overflow: hidden !important;
+}
+
+html { 
+    overflow-x: hidden; 
+    scroll-behavior: auto; 
+    width: 100%;
+}
+
+body { 
+    background-color: var(--bg); 
+    color: var(--text); 
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 70px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.section-info {
+    background-color: var(--bg);
+    transition: background-color 0.5s ease;
+}
+
+.navbar.fixed-top {
+    background: var(--nav);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,162,77,0.1);
+    z-index: 1030;
+    width: 100%;
+}
+.navbar-brand { font-family: 'Cinzel', serif; color: var(--text) !important; letter-spacing: 5px; cursor: pointer; }
+.btn-icon { background: none; border: none; color: var(--text); font-size: 1.3rem; padding: 8px; }
+
+.hero { height: 70vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; width: 100%; }
+.hero-image { position: absolute; inset: 0; background: url('imgs/website/hero.jpg') center/cover; z-index: 1; transform: scale(1.05); }
+.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); z-index: 2; }
+.hero-content { position: relative; z-index: 3; color: white; text-align: center; width: 100%; padding: 0 15px; }
+
+.category-card { 
+    height: 400px; position: relative; overflow: hidden; 
+    border-radius: 20px; cursor: pointer; border: 1px solid rgba(201,162,77,0.1);
+}
+.category-img { width: 100%; height: 100%; background-size: cover; background-position: center; transition: 1.2s; }
+.category-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); transition: 0.5s; }
+.category-card:hover .category-img { transform: scale(1.1); }
+.category-card h3 { 
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; 
+    color: white; font-family: 'Cinzel'; letter-spacing: 4px; z-index: 5; 
+}
+
+/* CAROUSEL ARROW FIXES */
+.carousel-control-prev { left: 0 !important; width: 10%; }
+.carousel-control-next { right: 0 !important; width: 10%; }
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: transparent !important; 
+    width: 3rem;
+    height: 3rem;
+    background-size: 100%, 100%;
+    filter: invert(1); 
+    transition: filter 0.5s ease;
+}
+
+[data-theme="dark"] .carousel-control-prev-icon, 
+[data-theme="dark"] .carousel-control-next-icon {
+    filter: invert(0); 
+}
+
+/* MODAL STYLES */
+.modal-content { 
+    background: var(--modal-bg); 
+    border: none;
+    position: relative; 
+    transition: background 0.5s ease;
+    border-radius: 30px !important; 
+}
+
+#mainModal.caracteristicas-mode .modal-content {
+    border-radius: 30px !important; 
+}
+
+.modal-content .btn-close { position: absolute; top: 20px; right: 20px; z-index: 100; }
+.custom-scroll { max-height: 80vh; overflow-y: auto; overflow-x: hidden; }
+
+/* TICKET STYLES */
+.ticket-paper {
+    background-color: var(--ticket-bg);
+    border: 1px dashed rgba(201,162,77,0.3);
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.ticket-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 10px 0;
+}
+[data-theme="dark"] .ticket-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+/* --- NUEVOS ESTILOS: TOGGLE & FORMULARIO --- */
+.switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(201,162,77,0.2);
+    border-bottom: 1px solid rgba(201,162,77,0.2);
+}
+
+.form-check-input:checked {
+    background-color: var(--gold);
+    border-color: var(--gold);
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(201, 162, 77, 0.25);
+    border-color: var(--gold);
+}
+
+#deliveryFormContainer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease;
+    opacity: 0;
+}
+
+#deliveryFormContainer.open {
+    max-height: 500px; /* Suficiente para el form */
+    opacity: 1;
+}
+
+.input-premium {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(128,128,128, 0.3);
+    border-radius: 0;
+    color: var(--text);
+    padding: 10px 0;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.input-premium:focus {
+    background: transparent;
+    border-bottom: 1px solid var(--gold);
+    box-shadow: none;
+    color: var(--text);
+}
+
+.input-premium::placeholder {
+    color: var(--text);
+    opacity: 0.5;
+}
+
+/* --- BANNER DE PRIVACIDAD --- */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--nav);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--gold);
+    padding: 20px;
+    z-index: 9999;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+}
+
+.cookie-banner.show {
+    transform: translateY(0);
+}
+
+@media(min-width: 768px) {
+    .cookie-banner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        padding: 15px 50px;
+    }
+}
+
+/* --- FIN NUEVOS ESTILOS --- */
+
+.btn-back {
+    background: rgba(201, 162, 77, 0.1);
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn-back:hover { background: var(--gold); color: white !important; }
+
+.cart-alert {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    z-index: 3000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    white-space: nowrap;
+    animation: slideDown 0.4s ease forwards;
+}
+
+.alert-error { background: #a43a3a; }
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translate(-50%, -20px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+.alert-link { text-decoration: underline; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 0.8rem; }
+
+@keyframes cart-bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+.cart-bounce { animation: cart-bounce 0.5s ease-in-out; }
+
+/* PRODUCT GRID LIMPIA */
+.product-grid { 
+    display: grid; 
+    gap: 40px; 
+    grid-template-columns: 1fr; 
+}
+@media (min-width: 768px) { .product-grid { grid-template-columns: 1fr 1fr; } }
+
+.product-item { 
+    background: transparent; 
+    border-radius: 20px; 
+    padding: 10px; 
+    border: none; 
+    box-shadow: none; 
+    transition: 0.4s; 
+    position: relative;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+}
+.product-item img {
+    border-radius: 20px;
+}
+
+/* OFF CANVAS CARRITO */
+.offcanvas { background: var(--modal-bg); color: var(--text); border-left: 1px solid rgba(201,162,77,0.1); }
+.btn-gold { background: var(--gold); color: white; border: none; padding: 12px 35px; border-radius: 50px; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; width: auto; display: inline-block; }
+.btn-gold:hover { background: #b08d42; transform: translateY(-2px); }
+
+.gold-text { color: var(--gold); }
+.ls-3 { letter-spacing: 3px; }
+.ls-5 { letter-spacing: 5px; }
+.badge-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; position: absolute; top: 0; right: 0; }
+
+.footer-custom {
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    border-top: 1px solid rgba(201, 162, 77, 0.1) !important;
+}
+
+.footer-link {
+    color: var(--text) !important;
+    transition: 0.3s;
+}
+
+.footer-link:hover {
+    color: var(--gold) !important;
+    opacity: 1 !important;
+}
+
+.footer-custom hr {
+    background-color: var(--text);
+}
+
+/* --- SCROLLBAR PERSONALIZADO --- */
+/* Funciona en Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 6px; /* Más delgado y elegante */
+    height: 6px; /* Para scroll horizontal si hubiera */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* Fondo invisible para limpieza */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(201, 162, 77, 0.5); /* Gold semi-transparente */
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--gold); /* Gold sólido al pasar el mouse */
+}
+
+/* Ajuste específico para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+}
+
+/* Ajuste para el contenedor del modal y offcanvas para que se vea integrado */
+.custom-scroll::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.02);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+[data-theme="dark"] .custom-scroll::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.02);
+}
